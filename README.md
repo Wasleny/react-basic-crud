@@ -1,4 +1,4 @@
-#REACT BASIC CRUD - with React Components
+# REACT BASIC CRUD - with React Components
 
 This project implements:
 - the creation of book review
