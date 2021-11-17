@@ -5,9 +5,6 @@ import Moment from "react-moment";
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
 
-  const deleteReview = (id) => {
-  };
-
   useEffect(() => {
     setReviews([...props.reviews]);
   }, [props.reviews]);
@@ -15,14 +12,19 @@ const Reviews = (props) => {
   return (
     <div>
       {reviews.map((review) => (
-
         <div className="review" key={review.id}>
           <div>
             <div className="buttons">
-              <button className="deleteReview" onClick={() => deleteReview(review.id)}>
+              <button
+                className="deleteReview"
+                onClick={() => props.deleteReview(review.id)}
+              >
                 <FaTrash />
               </button>
-              <button className="editReview" onClick={() => props.editReview(review.id)}>
+              <button
+                className="editReview"
+                onClick={() => props.editReview(review.id)}
+              >
                 <FaRegEdit />
               </button>
             </div>
@@ -39,7 +41,9 @@ const Reviews = (props) => {
             </fieldset>
             <fieldset>
               <legend>Resenha:</legend>
-              <div className="descriptionReview">{review.descriptionReview}</div>
+              <div className="descriptionReview">
+                {review.descriptionReview}
+              </div>
             </fieldset>
           </div>
         </div>

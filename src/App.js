@@ -20,8 +20,11 @@ const App = () => {
         nameAuthorBook,
         descriptionReview,
       };
-
-      setReviews([...reviews, review]);
+      let reviewsClone = reviews;
+      if (reviewsClone.length === 0) setReviews([...reviews, review]);
+      else {
+        setReviews([review, ...reviewsClone]);
+      }
       limparCampos();
     } else {
       let review = {
@@ -32,11 +35,9 @@ const App = () => {
       };
 
       let reviewsClone = reviews;
-      reviewsClone.filter((review) => review.id === inputId)
+      reviewsClone = reviewsClone.filter((review) => review.id !== inputId);
+      reviewsClone.unshift(review);
       setReviews(reviewsClone);
-      setReviews([...reviews, review]);
-
-      console.log(reviews);
 
       limparCampos();
     }
@@ -45,7 +46,6 @@ const App = () => {
 
   const editReview = (id) => {
     setIsEditing(true);
-    console.log(id);
     let reviewsClone = reviews;
     let reviewsFiltered = reviewsClone.find((review) => review.id === id);
 
@@ -56,7 +56,10 @@ const App = () => {
     document.querySelector(".inputDescriptionReview").value =
       reviewsFiltered.descriptionReview;
     setInputId(id);
-    console.log(inputId);
+  };
+
+  const deleteReview = (id) => {
+    setReviews(reviews.filter((review) => review.id !== id));
   };
 
   const limparCampos = () => {
@@ -68,7 +71,7 @@ const App = () => {
   return (
     <div className="App">
       <form method="POST" onSubmit={handleSubmit(onSubmit)} action="">
-        <input type="hidden" className="inputId"  value={inputId} />
+        <input type="hidden" className="inputId" value={inputId} />
         <input
           className="inputTitleReview"
           type="text"
@@ -91,7 +94,11 @@ const App = () => {
       </form>
 
       {reviews.length > 0 && (
-        <Reviews reviews={reviews} editReview={editReview} />
+        <Reviews
+          reviews={reviews}
+          editReview={editReview}
+          deleteReview={deleteReview}
+        />
       )}
     </div>
   );
