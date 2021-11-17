@@ -19,6 +19,7 @@ const App = () => {
         titleReview,
         nameAuthorBook,
         descriptionReview,
+        dateTimePublished: new Date(),
       };
       let reviewsClone = reviews;
       if (reviewsClone.length === 0) setReviews([...reviews, review]);
@@ -32,6 +33,7 @@ const App = () => {
         titleReview,
         nameAuthorBook,
         descriptionReview,
+        dateTimePublished: new Date(),
       };
 
       let reviewsClone = reviews;
@@ -90,7 +92,9 @@ const App = () => {
           {...register("descriptionReview", { required: true })}
           placeholder="Escreva sua resenha"
         ></textarea>
-        <button type="submit">"Publicar"</button>
+        <div className="divButton">
+          <button type="submit">Publicar</button>
+        </div>
       </form>
 
       {reviews.length > 0 && (

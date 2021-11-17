@@ -1,0 +1,69 @@
+.review {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 1rem;
+}
+
+.reviewsList {
+    border:1px solid #6eaa5e;
+    border-radius: 5px;
+    padding: 0.5rem 1rem 0 1rem;
+}
+
+div.headerReview {
+    height: 50px;
+}
+
+.headerReview .buttons {
+    float: left;
+}
+
+.contentReview .titleReview {
+    width: 100%;
+}
+
+.headerReview .buttons .deleteReview {
+    color: white;
+    background-color: #fc1723;
+    border-color: #fc1723;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: solid;
+}
+
+.headerReview .buttons .deleteReview:hover {
+    color: #fc1723;
+    background-color: white;
+}
+
+.headerReview .buttons .editReview {
+    color: white;
+    background-color: #48d1cc;
+    border-color: #48d1cc;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: solid;
+}
+
+.headerReview .buttons .editReview:hover {
+    color: #48d1cc;
+    background-color: white;
+}
+
+.headerReview .dateTime {
+    float: right;
+    font-size: 12px;
+}
+
+.titleReview {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.nameAuthorBook {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.titleReview, .nameAuthorBook, .descriptionReview {
+    word-break: break-word;
+}

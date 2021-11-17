@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FaTrash, FaRegEdit } from "react-icons/fa";
+import { FaTrash, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
+import "./index.css";
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
@@ -10,42 +11,39 @@ const Reviews = (props) => {
   }, [props.reviews]);
 
   return (
-    <div>
+    <div className="reviewsList">
       {reviews.map((review) => (
         <div className="review" key={review.id}>
-          <div>
+          <div className="headerReview">
             <div className="buttons">
               <button
                 className="deleteReview"
                 onClick={() => props.deleteReview(review.id)}
               >
-                <FaTrash />
+                <FaTrash size={20} />
               </button>
               <button
                 className="editReview"
                 onClick={() => props.editReview(review.id)}
               >
-                <FaRegEdit />
+                <FaPencilAlt size={20} />
               </button>
             </div>
-            <Moment format="DD/MM/YYYY HH:mm:ss">2021-11-16 11:50:11</Moment>
+            <i>
+              <Moment format="DD/MM/YYYY HH:mm:ss" className="dateTime">
+                {review.dateTimePublished}
+              </Moment>
+            </i>
           </div>
-          <div>
-            <fieldset>
-              <legend>Título:</legend>
+          <div className="contentReview">
               <div className="titleReview">{review.titleReview}</div>
-            </fieldset>
-            <fieldset>
-              <legend>Autor:</legend>
               <div className="nameAuthorBook">{review.nameAuthorBook}</div>
-            </fieldset>
-            <fieldset>
-              <legend>Resenha:</legend>
+              <br />
               <div className="descriptionReview">
                 {review.descriptionReview}
               </div>
-            </fieldset>
           </div>
+          <hr  color="#6eaa5e"/>
         </div>
       ))}
     </div>
